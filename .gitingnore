@@ -6,5 +6,5 @@
 *.elf
 *.exe
 *.txt
-*.gdb_history
+.gdb_history
 
