@@ -5,3 +5,6 @@
 *.bin
 *.elf
 *.exe
+*.txt
+*.gdb_history
+
