@@ -6,5 +6,6 @@
 *.elf
 *.exe
 *.txt
+.vscode
 .gdb_history
 
