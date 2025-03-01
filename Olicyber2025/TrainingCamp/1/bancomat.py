@@ -1,16 +1,16 @@
 from pwn import *
-elf = ELF('./bancomat')
-context.binary = elf
-context.terminal = ()
+#elf = ELF('./bancomat')
+# context.binary = elf
+# context.terminal = ()
 if args.REMOTE:
     p = remote('bancomat.challs.olicyber.it', 38049)
-elif args.GDB:
-    p = gdb.debug([elf.path], '''
-                  b main
-                  '''
-                  )
-else:
-    p = process([elf.path])
+# elif args.GDB:
+#     p = gdb.debug([elf.path], '''
+#                   b main
+#                   '''
+#                   )
+# else:
+#     p = process([elf.path])
 
 p.recvuntil(b'> ')
 p.sendline(b'1')
