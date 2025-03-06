@@ -1,11 +1,13 @@
-*/*.out/
-*/*.o/
-*/*.so/
-*/*.a/
-*/*.bin/
-*/*.elf/
-*/*.exe/
-*/*.txt/
-*/.vscode/
-*/.gdb_history/
+*
+!*.*
+!*/
 
+project.rep
+*.prg
+sherlock/
+pwndbg/
+*.pcap*
+*.so.*
+rockyou.txt
+.vscode
+.gdb_history
