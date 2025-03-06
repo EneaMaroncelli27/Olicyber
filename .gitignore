@@ -1,11 +1,11 @@
-*.out
-*.o
-*.so
-*.a
-*.bin
-*.elf
-*.exe
-*.txt
-.vscode
-.gdb_history
+*/*.out/
+*/*.o/
+*/*.so/
+*/*.a/
+*/*.bin/
+*/*.elf/
+*/*.exe/
+*/*.txt/
+*/.vscode/
+*/.gdb_history/
 
