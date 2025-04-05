@@ -7,6 +7,7 @@ def xor(a, b):
 for i in range(255):
     if not chr(i).isprintable():
         continue
+    # riusciamo a scoprire una parte della key grazie al known plaintext
     key = (bytes(x^y for x,y in zip(bytes.fromhex(flag_hex[:10]),(ord(c) for c in "flag{"))))
     key = (key + bytes([i]))*(len(flag_hex)//12 +1)
     if b'1337' in xor(bytes.fromhex(flag_hex),key):

