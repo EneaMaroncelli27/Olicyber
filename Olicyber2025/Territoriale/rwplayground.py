@@ -4,7 +4,7 @@ elf = ELF('./rwplayground')
 context.binary = elf
 context.terminal = ()
 if args.REMOTE:
-    p = remote('rwplayground.challs.olicyber.it', 38051)
+    p = remote('10.42.0.2', 38051)
 elif args.GDB:
     p = gdb.debug([elf.path],'''
     b main

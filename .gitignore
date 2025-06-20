@@ -9,5 +9,5 @@ pwndbg/
 *.pcap*
 *.so.*
 rockyou.txt
-.vscode
-.gdb_history
+**/.vscode
+**/.gdb_history
