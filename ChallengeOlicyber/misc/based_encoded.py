@@ -33,8 +33,11 @@ while True:
 
     p.sendlineafter(b'!\n',json.dumps(answer).encode())
     try:
-        # p.recvuntil(b'Ottimo!',timeout=3)
         p.recvuntil(b'Converti')
     except:
+        p.recvuntil(b'te!')
+        p.recvline()
+        flag = p.recvline().strip()
+        print(''.join(chr(int(c,8)) for c in flag.decode().split()))
+
         p.interactive()
-    
