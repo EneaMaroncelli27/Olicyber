@@ -8,7 +8,7 @@ class Critters:
         self.grid = grid
         self.h = len(grid)
         self.w = len(grid[0])
-        self.roundno = 41
+        self.roundno = 0
 
         if self.h % 2 != 0 or self.w % 2 != 0:
             raise ValueError("The grid dimensions must be a multiple of two")
@@ -16,10 +16,10 @@ class Critters:
             raise ValueError("The grid must contain either 0 or 1")
 
     def step(self):
-        off = self.roundno % 2
+        off = (self.roundno + 1) % 2
 
-        for j in range(0, self.h - 1, 2): #riga
-            for i in range(0, self.w - 1, 2): #colonna
+        for j in range(0, self.h - 1, 2):
+            for i in range(0, self.w - 1, 2):
                 # 
                 c00 = self.grid[(off + j) % self.h][(off + i) % self.w]
                 c01 = self.grid[(off + j) % self.h][(off + i + 1) % self.w]
@@ -33,10 +33,8 @@ class Critters:
                     # 
                     pass
                 elif s == 1:
-                    # c00 c01 c11 c10 --> 
-
-                    c00, c01, c11, c10 = c01, c11, c10, c00
-                    c00, c01, c11, c10 = c00 ^ 1, c01 ^ 1, c11 ^ 1, c10 ^ 1
+                    # 
+                    c10,c00,c01,c11 = c00 ^ 1, c01 ^ 1, c11 ^ 1, c10 ^ 1
                 else:
                     # 
                     c00, c01, c11, c10 = c00 ^ 1, c01 ^ 1, c11 ^ 1, c10 ^ 1
@@ -70,4 +68,4 @@ for i in range(img_in.width):
         x = critters.grid[j][i]
         img_out_px[i, j] = 255 if x == 0 else 0
 
-img_out.save(f"result.png")
+img_out.save(f"flag.png")
